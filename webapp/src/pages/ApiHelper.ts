@@ -28,7 +28,7 @@ const getInPipelineData = async () => {
     return { orderData, errorOccured };
 };
 
-const PRODUCTS_URL = '/api/products';
+const PRODUCTS_URL = '/api/products/';
 
 const getActiveProductsData = async () => {
     const activeProducts: ProductsData = [];
@@ -36,9 +36,7 @@ const getActiveProductsData = async () => {
     let errorOccured = false;
 
     try {
-      const response = await axios.get(PRODUCTS_URL, {
-        params: { status: "Active" },
-      });
+      const response = await axios.get(PRODUCTS_URL);
 
       if (response?.status === 200) {
         const { data } = response.data;
