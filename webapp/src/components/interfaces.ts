@@ -47,5 +47,4 @@ export interface ProductItemProps {
     ProductID: number;
     ProductName: string;
     ProductPhotoURL: string;
-    ProducStatus: string;
   }

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { getActiveProductsData } from "../ApiHelper";
 import { Product, ProductsData } from "../../components/interfaces";
+import ProductItem from "../../components/ProductItem/ProductItem";
 import PageWrapper from '../PageWrapper';
 import Spinner from "../../components/Spinner/Spinner";
 
@@ -39,10 +40,17 @@ const ProductsPage = () => {
   else if (loadingState === DATA_STATES.loaded)
     content = (
       <div
-        className="flex flex-row justify-center w-full pt-4"
+        className="flex flex-col gap-4 w-full bg-neutral-500 p-4"
         data-testid="pipeline-container"
       >
-        
+        {data.length > 0 && data.map((product) => (
+          <ProductItem
+            key={product.ProductID}
+            ProductID={product.ProductID}
+            ProductName={product.ProductName}
+            ProductPhotoURL={product.ProductPhotoURL}
+          />
+        ))}
       </div>
     );
   else
