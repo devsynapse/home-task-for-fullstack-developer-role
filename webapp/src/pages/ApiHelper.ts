@@ -75,6 +75,4 @@ const updateOrderStatus = async (order: Order, newOrderStatus: string) => {
     return orderStatusUpdated;
 };
 
-
-
-export { getInPipelineData, INPIPELINE_URL, updateOrderStatus, UPDATE_STATUS_URL };
+export { getInPipelineData, INPIPELINE_URL, updateOrderStatus, UPDATE_STATUS_URL,  getActiveProductsData };

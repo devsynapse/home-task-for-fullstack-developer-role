@@ -1,18 +1,66 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { getActiveProductsData } from "../ApiHelper";
+import { Product, ProductsData } from "../../components/interfaces";
 import PageWrapper from '../PageWrapper';
+import Spinner from "../../components/Spinner/Spinner";
+
+const DATA_STATES = {
+  waiting: 'WAITING',
+  loaded: 'LOADED',
+  error: 'ERROR'
+};
 
 const ProductsPage = () => {
-  /*
-    TODO:
-      When the drag ends we want to keep the status persistant across logins. 
-      Instead of modifying the data locally we want to do it serverside via a post
-      request
-  */
+  const [loadingState, setLoadingState] = useState(DATA_STATES.waiting);
+  const [data, setData] = useState([] as ProductsData);
+
+  const getActiveProducts = async () => {
+    setLoadingState(DATA_STATES.waiting);
+    const { activeProducts, errorOccured } = await getActiveProductsData();
+    setData(activeProducts);
+    setLoadingState(errorOccured ? DATA_STATES.error : DATA_STATES.loaded);
+  };
+
+  useEffect(() => {
+    getActiveProducts();
+  }, []);
+
+  let content;
+  if (loadingState === DATA_STATES.waiting)
+    content = (
+      <div
+        className="flex flex-row justify-center w-full pt-4"
+        data-testid="loading-spinner-container"
+      >
+        <Spinner />
+      </div>
+    );
+  else if (loadingState === DATA_STATES.loaded)
+    content = (
+      <div
+        className="flex flex-row justify-center w-full pt-4"
+        data-testid="pipeline-container"
+      >
+        
+      </div>
+    );
+  else
+    content = (
+      <div
+        className="flex flex-row justify-center w-full pt-4 text-3xl font-bold text-white"
+        data-testid="error-container"
+      >
+        An error occured fetching the data!
+      </div>
+    );
+
   return (
     <PageWrapper>
       <h1 className="text-3xl font-bold text-white">
-        Product Page Goes Here
+        Active Products
       </h1>
+      { content }
     </PageWrapper>
   );
 };
