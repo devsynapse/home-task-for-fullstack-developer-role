@@ -51,7 +51,7 @@ class BaseModel(Model):
     class Meta:
         database = db
 
-class Products(BaseModel):
+class Product(BaseModel):
     ProductID = IntegerField(primary_key=True)
     ProductName = CharField(100, null=False)
     ProductPhotoURL = CharField(255, null=False)

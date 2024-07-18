@@ -1,5 +1,5 @@
 from flask import Blueprint
-from api.models import Products
+from api.models import Product
 from api.schemas import ProductSchema
 
 products_blueprint = Blueprint('products_blueprint', __name__)
@@ -8,8 +8,8 @@ products_blueprint = Blueprint('products_blueprint', __name__)
 def get_active_products():
     product_schema = ProductSchema(many=True)
     try:
-        products = Products.select().where(
-            (Products.ProductStatus == 'Active')
+        products = Product.select().where(
+            (Product.ProductStatus == 'Active')
         ).dicts()
 
         products_serialized = product_schema.dump(products)
