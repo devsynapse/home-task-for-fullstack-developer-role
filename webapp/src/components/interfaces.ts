@@ -33,3 +33,12 @@ export interface HeaderLink {
 export interface HeaderProps {
     links: HeaderLink[];
 }
+
+export interface Product {
+    ProductID: number;
+    ProductName: string;
+    ProductPhotoURL: string;
+    ProducStatus: string;
+}
+
+export interface ProductsData extends Array<Product> {}
