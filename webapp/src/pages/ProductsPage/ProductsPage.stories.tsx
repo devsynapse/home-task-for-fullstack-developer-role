@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
 import ProductsPage from "./ProductsPage";
-import { INPIPELINE_URL, UPDATE_STATUS_URL } from "../ApiHelper";
+import { PRODUCTS_URL } from "../ApiHelper";
 
 export default {
     title: 'Products Page',
@@ -16,7 +16,7 @@ export const GetDataSuccess = Template.bind({});
 GetDataSuccess.parameters = {
     mockData: [
         {
-            url: INPIPELINE_URL,
+            url: PRODUCTS_URL,
             method: 'GET',
             status: 200,
             response: {
@@ -43,16 +43,6 @@ GetDataSuccess.parameters = {
                 message: ""
             },
         },
-        {
-            url: UPDATE_STATUS_URL,
-            method: 'POST',
-            status: 200,
-            response: {
-                data: {
-                    message: 'Success',
-                },
-            },
-        },
     ],
 };
 
@@ -60,22 +50,12 @@ export const GetDataSuccessEmpty = Template.bind({});
 GetDataSuccessEmpty.parameters = {
     mockData: [
         {
-            url: INPIPELINE_URL,
+            url: PRODUCTS_URL,
             method: 'GET',
             status: 200,
             response: {
                 data: [],
                 message: ""
-            },
-        },
-        {
-            url: UPDATE_STATUS_URL,
-            method: 'POST',
-            status: 200,
-            response: {
-                data: {
-                    message: 'Success',
-                },
             },
         },
     ],
@@ -85,23 +65,13 @@ export const GetDataError = Template.bind({});
 GetDataError.parameters = {
     mockData: [
         {
-            url: INPIPELINE_URL,
+            url: PRODUCTS_URL,
             method: 'GET',
             status: 500,
             response: {
                 data: [],
                 message: "Error"
             }
-        },
-        {
-            url: UPDATE_STATUS_URL,
-            method: 'POST',
-            status: 200,
-            response: {
-                data: {
-                    message: 'Success',
-                },
-            },
         },
     ],
 };
