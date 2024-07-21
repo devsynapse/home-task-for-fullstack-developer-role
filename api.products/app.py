@@ -3,7 +3,7 @@ from api.blueprints.products import products_blueprint
 from api.models import db
 
 _URL_PREFIX ='/api'
-PRODUCTS_URL = f"{_URL_PREFIX}/products"
+PRODUCTS_URL = f"{_URL_PREFIX}/products/"
 
 app = Flask(__name__)
 

@@ -3,6 +3,7 @@ from peewee import (
     Model,
     IntegerField,
     CharField,
+    ForeignKeyField,
     Field
 )
 from playhouse.mysql_ext import MariaDBConnectorDatabase
@@ -50,6 +51,14 @@ class EnumField(Field):
 class BaseModel(Model):
     class Meta:
         database = db
+
+class Customer(BaseModel):
+    CustomerID = IntegerField(primary_key=True)
+    CustomerFirstName = CharField(100, null=False)
+    CustomerLastName = CharField(100, null=False)
+    
+    class Meta:
+        table_name = 'Customer'
 
 class Product(BaseModel):
     ProductID = IntegerField(primary_key=True)
