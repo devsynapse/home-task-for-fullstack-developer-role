@@ -39,6 +39,14 @@ To build the docker image for api.orders run the command bellow from the root of
 docker build -t api.orders:latest .
 ```
 
+### api.products
+
+To build the docker image for api.products run the command bellow from the root of the `api.products` directory
+
+```Bash
+docker build -t api.products:latest .
+```
+
 ### Starting the application
 
 To start application run the following command from the root directory
@@ -86,6 +94,17 @@ python -m pytest tests/ # from within the container
 ```
 
 NOTE: Make sure the api.orders container is running.
+
+### Testing api.products
+
+To run the pytests from the root directory run the following commands
+
+```Bash
+docker compose exec -it api-products bash
+python -m pytest tests/ # from within the container
+```
+
+NOTE: Make sure the api.products container is running.
 
 You can also install all the dependencies locally and run the tests using the same command that you run inside the docker container from the bakcend directory. Would recommend setting up a python env under the .venv directory name for this
 
