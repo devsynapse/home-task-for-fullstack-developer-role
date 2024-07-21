@@ -41,7 +41,7 @@ const ProductsPage = () => {
     content = (
       <div
         className="flex flex-col gap-4 w-full bg-neutral-500 p-4"
-        data-testid="pipeline-container"
+        data-testid="products-container"
       >
         {data.length > 0 && data.map((product) => (
           <ProductItem
